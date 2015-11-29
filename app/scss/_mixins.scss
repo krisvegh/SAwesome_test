@@ -1,0 +1,8 @@
+@mixin sprite($h,$v,$hover) {
+	background: url(/images/spritesheet.png) $h+px $v+px;
+	
+	&:hover {
+		background-position-y: $hover+px;
+		cursor: pointer;		
+	}
+}

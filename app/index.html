@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Krisztian Vegh</title>
+	<!--<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" type="text/css">-->
+	<link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body ng-controller="MainController as vm">
+
+	<div id="wrapper">
+		 <header>
+			 <a href="/home"><div id="home" class="navbuttons"></div></a>
+			 <a href="/"><div id="gallery" class="navbuttons"></div></a>
+			 <a href="http://www.superawesome.tv/en/" target="_blank"><div id="official_site" class="navbuttons"></div></a>
+		 </header>
+		 
+		 <div id="scenebuilder">
+			 
+			 <aside>
+				 <div id="uparrow" class="varrows"
+				 	ng-click="vm.bgSlide('up')"></div>
+				 <div id="bgthumbcontainer">
+					 <div id="bgthumbsinner"
+					 	ng-style="vm.bgThumbStyle">
+						<img ng-repeat="background in vm.backgrounds"
+							 ng-click="vm.drawBackground(background)"
+							 ng-src="/images/{{background}}.jpg" 
+							 alt="{{background}}"
+							 width="90px"
+							 height="63px"
+							 class="bgthumbnails"
+							 id="background_{{background}}">
+					</div>
+				 </div>
+				 <div id="downarrow" class="varrows"
+				 	ng-click="vm.bgSlide('down')"></div>
+			 </aside>
+			 
+			 <div id="characters">
+				 <div id="leftarrow" class="harrows"
+				 		ng-click="vm.charSlide('left')"></div>
+				 <div id="charthumbscontainer">
+					 <div id="charthumbsinner"
+					 	ng-style="vm.charThumbStyle">
+						 <img ng-repeat="char in vm.characters"
+						 	  ng-click="vm.drawCharacter(char)" 
+						 	  ng-src="/images/chars/{{char}}.png" 
+							  alt="{{char}}"
+							  title="{{char}}"
+							  height="75px"
+							  class="characters"
+							  id="char_{{char}}">
+					 </div>
+				 </div>
+				 <div id="rightarrow" class="harrows"
+				 	ng-click="vm.charSlide('right')"></div>
+			 </div>
+			 
+			 <div id="text">
+				<textarea id="textfield"
+					ng-model="vm.sceneTexts[vm.activeScene]">
+				</textarea>
+				<div id="sendbutton">			
+				</div>
+			 </div>
+			 
+			 <div id="canvascontainer">
+				 <div id="sceneselector">
+					 <div class="scenebuttons" id="scene1"
+					 	  ng-class="{active : vm.activeScene == 1}"
+						  ng-click="vm.activeScene = 1"></div>
+						  
+					 <div class="scenebuttons" id="scene2"
+					 	  ng-class="{active : vm.activeScene == 2}"
+						  ng-click="vm.activeScene = 2"></div>
+
+					 <div class="scenebuttons" id="scene3"
+					 	  ng-class="{active : vm.activeScene == 3}"
+						  ng-click="vm.activeScene = 3"></div>
+
+					 <div class="scenebuttons" id="scene4"
+					 	  ng-class="{active : vm.activeScene == 4}"
+						  ng-click="vm.activeScene = 4"></div>
+				 </div>
+				 <div class="canvaswrapper" ng-show="vm.activeScene == 1">
+					<canvas width="665px" height="310px" id="canvas1"> Sorry, canvas is not supported by your browser.</canvas>
+					<p class="canvas_textarea">{{vm.sceneTexts[1]}}</p>
+				 </div>
+				 <div class="canvaswrapper" ng-show="vm.activeScene == 2">
+					<canvas width="665px" height="310px" id="canvas2"> Sorry, canvas is not supported by your browser.</canvas>
+					<p class="canvas_textarea">{{vm.sceneTexts[2]}}</p>
+				 </div>
+				 <div class="canvaswrapper" ng-show="vm.activeScene == 3">
+					<canvas width="665px" height="310px" id="canvas3"> Sorry, canvas is not supported by your browser.</canvas>
+					<p class="canvas_textarea">{{vm.sceneTexts[3]}}</p>
+				 </div>
+				 <div class="canvaswrapper" ng-show="vm.activeScene == 4">
+					<canvas width="665px" height="310px" id="canvas4"> Sorry, canvas is not supported by your browser.</canvas>
+					<p class="canvas_textarea">{{vm.sceneTexts[4]}}</p>
+				 </div>
+
+			 </div>	
+		 </div>
+		 
+	</div>
+	
+	<script src="/lib/jquery/dist/jquery.min.js"></script>
+	<script src="/lib/fabric.js/dist/fabric.min.js"></script>
+	<script src="/lib/angular/angular.min.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/dataservice.js"></script>
+</body> 
+</body>
+
+</html>

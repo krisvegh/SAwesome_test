@@ -1,0 +1,264 @@
+@import 'transitions';
+@import 'mixins';
+
+#wrapper {
+	background: url(/images/bg-home.png) top center no-repeat;
+	width: 940px;
+	height: 1650px;
+	position: relative;
+	margin: 0 auto;
+	
+	header {
+		height: 55px;
+		text-align: center;
+		
+		.navbuttons {
+			height: 30px;
+			display: inline-block;
+			margin: 13px 5px 0 5px;
+			
+			
+			&#home {
+				@include sprite(-210, -32, -67);
+				width: 95px;
+			}
+			
+			&#gallery {
+				@include sprite(-305, -32, -67);
+				width: 123px;
+			}
+			
+			&#official_site {
+				@include sprite(-432, -32, -67);
+				width: 185px;
+			}
+		}
+	}
+	
+	#scenebuilder {
+		position: relative;
+		top: 610px;
+		background: url(/images/canvasbg.png) center center no-repeat;
+		width: 940px;
+		height: 830px;
+		
+		aside {
+			position: absolute;
+			width: 100px;
+			display: block;
+			left: 50px;
+			top: 215px;
+			
+			#bgthumbcontainer {
+				position: relative;
+				height: 208px;
+				overflow: hidden;
+				margin: 0;
+				top: 30px;
+				width: 105px;
+				
+				#bgthumbsinner {
+					position: relative;
+					@extend .transition_slider;
+					
+					img {
+						@extend .transition_select;
+					}
+				}
+			}
+			
+			.varrows {
+				height: 30px;
+				width: 30px;
+				background-size: 20px !important;
+				position: absolute;
+				left: 0;
+				right: 0;
+				user-select: none;
+				
+				&#uparrow {
+					background: url(/images/up.png) center center no-repeat;
+					
+					&:hover {
+						background: url(/images/up2.png) center center no-repeat;
+						cursor: pointer;
+					}
+				}
+				&#downarrow {
+					background: url(/images/down.png) center center no-repeat;
+					bottom: -60px;
+					
+					&:hover {
+						background: url(/images/down2.png) center center no-repeat;
+						cursor: pointer;
+						
+					}
+				}
+			}
+			
+			.bgthumbnails {
+				border: 2px solid white;
+				box-shadow: 2px 2px 3px #888;
+				margin: 5px auto;
+			}
+			
+			
+			* {
+				display: block;
+				margin: 0 auto;
+			}
+		}
+		
+		#characters {
+			position: relative;
+			display: block;
+			top: 475px;
+			left: 183px;
+			width: 280px;
+			
+			.harrows {
+					height: 100%;
+					width: 40px;
+					top: 0px;
+					position: absolute;
+					user-select: none;
+								
+				&#leftarrow {
+					left: -35px;
+					background: url(/images/left.png) center center no-repeat;
+					background-size: 25px;
+					
+					&:hover {
+						background: url(/images/left2.png) center center no-repeat;
+						background-size: 25px;
+						cursor: pointer;
+					}
+				}
+
+				&#rightarrow {
+					left: 205px;
+					background: url(/images/right.png) center center no-repeat;
+					background-size: 25px;
+					
+					&:hover {
+						background: url(/images/right2.png) center center no-repeat;
+						background-size: 25px;
+						cursor: pointer;
+					}
+				}
+				
+			}
+		
+			#charthumbscontainer {
+				width: 200px;
+				height: 100px;
+				position: relative;
+				overflow: hidden;
+				
+				#charthumbsinner {
+					@extend .transition_slider;
+					position: relative;
+					width: auto;
+					white-space: nowrap;
+					
+					.characters {
+						margin: 10px;
+						display: inline-block;
+						backface-visibility: hidden;
+    					transform: translateZ(0);
+						@extend .transition_select;
+					}
+				}
+			}
+		}
+		
+		#text {
+			position: relative;
+			left: 525px;
+			top: 394px;
+			width: 350px;
+		
+			#textfield {
+				background: transparent;
+				resize: none;	
+				width: 325px;
+				height: 60px;
+				color: #666;
+			}
+			
+			#sendbutton {
+				width: 106px;
+				height: 30px;
+				right: 0px;
+				bottom: -15px;
+				position: absolute;
+				background: url(/images/spritesheet.png) -100px -34px;
+			}
+		}
+		
+		#canvascontainer {
+			position: absolute;
+			top: 100px;
+			left: 190px;
+			
+			#sceneselector {
+				text-align: right;
+				height: 35px;
+				
+				.scenebuttons {
+					width: 112px;
+					height: 35px;
+					display: inline-block;
+					position: relative;
+					@include sprite(-116, -117, -157);
+					
+					&.active {
+						background-position-y: -198px;
+					}
+					
+					&#scene1 {
+						background-position-x: 0px;
+					}
+					&#scene2 {
+						background-position-x: -113px;
+					}
+					&#scene3 {
+						background-position-x: -227px;
+					}
+					&#scene4 {
+						background-position-x: -340px;
+					}
+				}
+			}
+			
+			.canvaswrapper {
+				
+				canvas {
+					box-shadow: 1px 1px 3px #888;
+					border: 2px solid white;
+				}
+				
+				.canvas_textarea {
+					position: absolute;
+					height: 50px;
+					width: 100%;
+					bottom: 0;
+					margin: 0;
+					background-color: rgba(50, 50, 50, .7);
+					padding: 7px 10px;
+					font-size: 13px;
+					font-family: Helvetica, sans-serif;
+					color: white;
+					text-align: center;
+				}
+				
+			}
+			
+		}
+		
+	}
+}
+
+* {
+	box-sizing: border-box;
+}

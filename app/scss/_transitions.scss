@@ -1,0 +1,13 @@
+.transition_slider {
+	transform: translate3d(0px, 0px, 0px);
+	transition: transform .5s cubic-bezier(.5,.73,.57,1);	
+}
+
+.transition_select {
+	transition: transform .3s ease-out;
+	
+	&:hover {
+		transform: scale(1.1);
+		cursor: pointer;
+	}
+}
